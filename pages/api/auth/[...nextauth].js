@@ -12,8 +12,8 @@ export const authOptions = {
     }),
 
     GithubProviders({
-      clientId: process.env.GITHUB_APP_ID,
-      clientSecret: process.env.GITHUB_PUBLIC_KEY,
+      clientId: process.env.GITHUB_CLIENT_ID,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET,
     }),
     GoogleProviders({
       clientId: process.env.GOOGLE_CLIENT_ID,
