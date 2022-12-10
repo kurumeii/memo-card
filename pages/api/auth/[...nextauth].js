@@ -1,6 +1,7 @@
 import NextAuth from 'next-auth'
 import FacebookProviders from 'next-auth/providers/facebook'
 import GithubProviders from 'next-auth/providers/github'
+import DiscordProviders from 'next-auth/providers/discord'
 import GoogleProviders from 'next-auth/providers/google'
 
 export const authOptions = {
@@ -18,6 +19,11 @@ export const authOptions = {
     GoogleProviders({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    }),
+
+    DiscordProviders({
+      clientId: process.env.DISCORD_CLIENT_ID,
+      clientSecret: process.env.DISCORD_CLIENT_SECRET,
     }),
   ],
   pages: {
