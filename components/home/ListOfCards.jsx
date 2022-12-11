@@ -9,7 +9,7 @@ function ListOfCards(props) {
   const { className } = props
   const [layout, setLayout] = useState(layoutEnums.card)
   const layoutBtnClassname = useCallback(
-    layoutId => cn('btn', layoutId === layout ? 'btn-active' : ''),
+    layoutId => cn('btn btn-outline', layoutId === layout ? 'btn-active' : ''),
     [layout]
   )
   return (

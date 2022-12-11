@@ -4,7 +4,7 @@ import GithubProviders from 'next-auth/providers/github'
 import DiscordProviders from 'next-auth/providers/discord'
 import GoogleProviders from 'next-auth/providers/google'
 
-export const authOptions = {
+export default NextAuth({
   // Configure one or more authentication providers
   providers: [
     FacebookProviders({
@@ -34,6 +34,4 @@ export const authOptions = {
       return baseUrl
     },
   },
-}
-
-export default NextAuth(authOptions)
+})

@@ -1,11 +1,10 @@
 import Head from 'next/head'
-import GenerateCardsInput from '../components/home/GenerateCardsInput.jsx'
 import ListOfCards from '../components/home/ListOfCards'
-import Welcome from '../components/home/Welcome.jsx'
+import Navbar from '../components/home/Navbar'
 
 export default function Home() {
   return (
-    <div className='flex min-h-screen flex-col items-center justify-center p-2'>
+    <>
       <Head>
         <title>Memory Note</title>
         <meta
@@ -17,13 +16,11 @@ export default function Home() {
           href='/favicon.ico'
         />
       </Head>
-
-      <main className='flex w-full flex-1 flex-col items-stretch justify-start py-10 lg:px-20 text-center'>
-        <Welcome className={'font-bold text-2xl py-10 lg:py-5'} />
-        <GenerateCardsInput className={'flex justify-center py-10 lg:py-5'} />
-        <ListOfCards className={'flex flex-1 justify-start flex-col'} />
+      <Navbar />
+      <main className='flex w-full flex-1 flex-col items-center justify-start text-center p-10'>
+        <ListOfCards className={'flex flex-1 justify-start flex-col w-full'} />
       </main>
-    </div>
+    </>
   )
 }
 
