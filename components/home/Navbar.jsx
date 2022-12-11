@@ -9,7 +9,7 @@ function Navbar() {
   return (
     <>
       {/* Navbar */}
-      <div className='navbar backdrop-blur bg-transparent w-full min-h-20 h-24 sticky top-0 z-20'>
+      <div className='navbar bg-base-300 w-full min-h-20 h-24 sticky top-0 z-20'>
         <div className='navbar-start'>
           <div className='hidden md:block normal-case text-2xl font-semibold ml-5'>Memo Note</div>
           <button
@@ -44,6 +44,9 @@ function Navbar() {
                     src={session.user.image}
                     alt='avatar'
                     fill
+                    sizes='(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw'
                   />
                 </div>
               </label>
@@ -75,7 +78,7 @@ function Navbar() {
       {/* Side drawer */}
       <div
         className={cn(
-          'fixed top-0 bottom-0 w-full h-screen bg-base-100 -inset-x-full transition-transform overflow-hidden overscroll-contain z-40 p-14 flex flex-1 flex-col gap-y-10',
+          'fixed top-0 bottom-0 w-full h-screen bg-base-300 -inset-x-full transition-transform overflow-hidden overscroll-contain z-30 p-14 flex flex-1 flex-col gap-y-10',
           clicked && 'translate-x-full'
         )}
       >
@@ -100,6 +103,9 @@ function Navbar() {
                 src={session.user.image}
                 alt='avatar'
                 fill
+                sizes='(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw'
               />
             </div>
             <span className='font-semibold text-xl'>Hello {session.user.name}</span>

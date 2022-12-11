@@ -1,32 +1,30 @@
 import React from 'react'
 
-function ListLayout({ className }) {
-  const arr = Array.from({ length: 100 }, (_, index) => index++)
-  const dummyDate = new Date().toLocaleDateString('vi', {
-    dateStyle: 'medium',
-  })
+function ListLayout({ className, array }) {
   return (
     <div className={className}>
-      <table className='table w-full'>
-        <thead>
-          <tr>
-            <th></th>
-            <th>Title</th>
-            <th>Message</th>
-            <th>Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          {arr.map((item, index) => (
-            <tr key={index}>
-              <td>{index + 1}</td>
-              <td>Title {item}</td>
-              <td>This is a dummy text for title {item}</td>
-              <td>{dummyDate}</td>
+      {array.length !== 0 && (
+        <table className='table w-full'>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Title</th>
+              <th>Text content</th>
+              <th>Date</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {array.map(({ id, created_at, userid, title, text_content }, index) => (
+              <tr key={id}>
+                <td>{index + 1}</td>
+                <td>{title}</td>
+                <td className='truncate'>{text_content}</td>
+                <td>{created_at}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
     </div>
   )
 }

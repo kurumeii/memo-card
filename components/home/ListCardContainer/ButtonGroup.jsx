@@ -9,13 +9,13 @@ function ButtonGroup({ className, onClickEvent, layoutBtnClassname }) {
         className={layoutBtnClassname(layoutEnums.card)}
         onClick={() => onClickEvent(layoutEnums.card)}
       >
-        <QueueListIcon className='w-6 h-6' />
+        <QueueListIcon className='w-8 h-8 lg:w-6 lg:h-6' />
       </button>
       <button
         className={layoutBtnClassname(layoutEnums.list)}
         onClick={() => onClickEvent(layoutEnums.list)}
       >
-        <ListBulletIcon className='w-6 h-6' />
+        <ListBulletIcon className='w-8 h-8 lg:w-6 lg:h-6' />
       </button>
     </div>
   )
