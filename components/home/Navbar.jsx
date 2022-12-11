@@ -103,7 +103,12 @@ function Navbar() {
               />
             </div>
             <span className='font-semibold text-xl'>Hello {session.user.name}</span>
-            <button className='btn btn-wide btn-outline btn-error'>Logout ?</button>
+            <button
+              className='btn btn-wide btn-outline btn-error'
+              onClick={() => signOut()}
+            >
+              Logout ?
+            </button>
           </div>
         ) : (
           <div className='flex justify-center flex-1 items-end'>
