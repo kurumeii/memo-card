@@ -59,16 +59,4 @@ const getUserInfo = async ({ tableName, email }) => {
   }
 }
 
-const subscribeToChange = () => {
-  const realtimeChannel = supabase.channel('tr_check_filters')
-  realtimeChannel
-    .on('postgres_changes', { event: '*', schema: 'public', table: 'memos' }, payload => {
-      return {
-        newData: payload.new,
-        oldData: payload.old,
-      }
-    })
-    .subscribe()
-}
-
-export { initClient, createNewMemo, fetchAllMemos, getUserInfo, subscribeToChange }
+export { initClient, createNewMemo, fetchAllMemos, getUserInfo }

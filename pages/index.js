@@ -34,36 +34,20 @@ export const getServerSideProps = async context => {
 
   return {
     props: {
-      supabaseAccessToken,
+      token: supabaseAccessToken,
       data: memos.error ? [] : memos.data,
       userid: userInfoRes.data[0].id,
     },
   }
 }
-export const UserIdContext = createContext()
+export const UserContext = createContext()
 
-export default function Home({ supabaseAccessToken, data, userid }) {
+export default function Home({ token, data, userid }) {
   const [list, setList] = useState(data)
 
-  // const handleRefreshList = useCallback(() => {
-  //   const fetch = async () => {
-  //     const { data, error } = await fetchAllMemos({
-  //       tableName: 'memos',
-  //       userid,
-  //     })
-  //     if (error) {
-  //       swal.fire({
-  //         ...failSawlOpt,
-  //         title: error,
-  //       })
-  //     } else setList(data)
-  //   }
-  //   fetch()
-  // }, [userid])
-
   useEffect(() => {
-    if (!supabaseAccessToken) return
-    const supabase = initClient(supabaseAccessToken)
+    if (!token) return
+    const supabase = initClient(token)
     supabase
       .channel('tr_check_filters')
       .on('postgres_changes', { event: '*', schema: 'public', table: 'memos' }, payload => {
@@ -97,10 +81,10 @@ export default function Home({ supabaseAccessToken, data, userid }) {
     return () => {
       supabase.removeAllChannels()
     }
-  }, [supabaseAccessToken])
+  }, [token])
 
   return (
-    <UserIdContext.Provider value={userid}>
+    <UserContext.Provider value={userid}>
       <div className='min-h-screen h-full w-full bg-base-100 overflow-hidden'>
         <Head>
           <title>Memory Note</title>
@@ -111,20 +95,13 @@ export default function Home({ supabaseAccessToken, data, userid }) {
         </Head>
         <Navbar />
         <div className='px-10'>
-          {list.length !== 0 && (
-            <CreateNewButton
-              className={'flex justify-start w-full py-4'}
-              // handleRefreshList={handleRefreshList}
-            />
-          )}
+          {list.length !== 0 && <CreateNewButton className={'flex justify-start w-full py-4'} />}
           <ListOfCards
             className={'flex flex-1 justify-start flex-col w-full'}
             list={list}
-            // handleRefreshList={handleRefreshList}
           />
         </div>
       </div>
-    </UserIdContext.Provider>
+    </UserContext.Provider>
   )
 }
-

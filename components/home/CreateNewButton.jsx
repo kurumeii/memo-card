@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import { createNewMemo } from '../../libs/superbase'
-import { UserIdContext } from '../../pages'
+import { UserContext } from '../../pages'
 import { failSawlOpt, successSwalOpt } from '../../utils/configs/sweetAlert'
 import { SimpleModal as Modal } from '../shared/SimpleModal'
 
@@ -14,10 +14,10 @@ const initFields = {
   userid: 0,
 }
 
-function CreateNewButton({ className, handleRefreshList }) {
+function CreateNewButton({ className }) {
   const [createBtnClicked, setCLick] = useState(false)
   const [fieldValue, setFieldValue] = useState(initFields)
-  const userid = useContext(UserIdContext)
+  const userid = useContext(UserContext)
   const openModal = () => setCLick(true)
   const closeModal = () => setCLick(false)
   const onChangeField = e => {
